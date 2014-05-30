@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="screen_background_gray">#ff242424</item>
+    <item type="drawable" name="divider_black">#ff3f5066</item>
+    <item type="drawable" name="transparent">#00000000</item>
+    <item type="drawable" name="dark_transparent">#b0000000</item>
+    <item type="drawable" name="listview_item_bg">#ffffffff</item>
+    <item type="drawable" name="listview_his_item_bg">#fff0f0f0</item>
+    <item type="drawable" name="listview_his_item_pressed_bg">#ff555555</item>
+    <item type="drawable" name="progress_bar_color">#ff619dfa</item>
+    <item type="drawable" name="progress_bar_blackr">#ffefefef</item>
+     <item name="discover_bottom_btn_pressed" type="drawable">#ff202020</item>
+</resources>
