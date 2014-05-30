@@ -15,17 +15,12 @@ import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.format.Time;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
-import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -77,6 +72,7 @@ public class MediaPlayActivity extends Activity implements OnClickListener {
 
 			case NOTIFY_SB_CHANG:
 				sb_progress.setProgress(msg.arg1);
+				Log.i(TAG, "---------" + msg.arg1);
 
 				break;
 			case NOTIFY_MEDIA_CHANG:
@@ -170,6 +166,7 @@ public class MediaPlayActivity extends Activity implements OnClickListener {
 		public void surfaceCreated(SurfaceHolder holder) {
 			Log.d(TAG, "surfaceCreated called");
 			playVideo();
+			setTimer();
 		}
 	}
 
@@ -269,11 +266,13 @@ public class MediaPlayActivity extends Activity implements OnClickListener {
 			public void run() {
 				Message message = Message.obtain();
 				message.what = NOTIFY_SB_CHANG;
-				message.arg1 = mMediaPlayer.getCurrentPosition();
+				if (mMediaPlayer.isPlaying()) {
+					message.arg1 = mMediaPlayer.getCurrentPosition();
+				}
 				uiHandler.sendMessage(message);
 			}
 		};
-		timer.schedule(task, 1000, 500);
+		timer.schedule(task, 2000, 500);
 	}
 
 	/* 销毁 */
